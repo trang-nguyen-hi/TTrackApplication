@@ -1,5 +1,7 @@
 package com.example.assignment2;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,16 +37,15 @@ public class HistoryView extends TableView implements ModelSubscriber {
     //update the history table
     public void updateHistory() {
         this.refresh();
-        this.setItems(model.getMonthlyDurations());
+        ObservableList<TaskMonthlyDuration> list = FXCollections.observableArrayList();;
+        for (Task task : model.getTasks()){
+            list.addAll(task.monthlyDurations);
+        }
+        this.setItems(list);
     }
 
     @Override
-    public void modelTaskAdded() {
-
-    }
-
-    @Override
-    public void modelTimerChanged() {
+    public void modelTaskAdded(Task task) {
     }
 
     @Override

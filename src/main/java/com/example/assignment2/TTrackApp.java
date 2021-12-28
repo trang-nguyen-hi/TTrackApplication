@@ -5,8 +5,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class TTrackApp extends Application {
-    private Model model;
-    private Controller controller;
 
     public static void main(String[] args) {
         launch(args);
@@ -16,17 +14,16 @@ public class TTrackApp extends Application {
         MainView mainView = new MainView();
 
         // set up MVC architecture
-        model = new Model();
-        controller = new Controller();
+        Model model = new Model();
+        Controller controller = new Controller();
         mainView.setModel(model);
         mainView.setController(controller);
         controller.setModel(model);
         model.addSubscriber(mainView);
 
-        Stage stage = primaryStage;
-        stage.setScene(new Scene(mainView));
-        stage.setTitle("TTrack");
+        primaryStage.setScene(new Scene(mainView));
+        primaryStage.setTitle("TTrack");
 
-        stage.show();
+        primaryStage.show();
     }
 }

@@ -58,7 +58,11 @@ public class AddNewTaskView extends BorderPane {
     }
 
     public void setController(Controller newController) {
-        addButton.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> newController.handleAddNewTask(nameField.getText(), detailField.getText()));
+        addButton.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+            newController.handleAddNewTask(nameField.getText(), detailField.getText());
+            nameField.setText("");
+            detailField.setText("");
+        });
     }
 
 }

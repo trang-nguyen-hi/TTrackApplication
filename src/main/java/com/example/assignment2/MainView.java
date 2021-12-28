@@ -47,11 +47,7 @@ public class MainView extends VBox implements ModelSubscriber {
     }
 
     @Override
-    public void modelTaskAdded() {
-    }
-
-    @Override
-    public void modelTimerChanged() {
+    public void modelTaskAdded(Task task) {
     }
 
     @Override

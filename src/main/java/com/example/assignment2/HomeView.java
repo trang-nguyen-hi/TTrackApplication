@@ -60,13 +60,13 @@ public class HomeView extends VBox implements ModelSubscriber {
         TaskView taskView = new TaskView(task);
         taskView.setDetail(task.getDetail());
         taskView.setController(controller);
+        task.setTaskView(taskView);
 
         // create new tab
         Tab newTab = new Tab(task.getTaskName(), taskView);
         newTab.setClosable(false);
         taskPane.getTabs().add(newTab);
-        Label l = null;
-        l = new Label(newTab.getText());
+        Label l = new Label(newTab.getText());
         l.setRotate(90);
         stp = new StackPane(new Group(l));
         newTab.setGraphic(stp);
@@ -74,15 +74,6 @@ public class HomeView extends VBox implements ModelSubscriber {
 
         // direct user to the new tab
         taskPane.getSelectionModel().select(newTab);
-    }
-
-    // update the timer
-    public void updateTimer() {
-        for (Tab tab : taskPane.getTabs()) {
-            if (tab != addTab) {
-                ((TaskView) tab.getContent()).updateTimer();
-            }
-        }
     }
 
     public void setModel(Model newModel) {
@@ -104,13 +95,8 @@ public class HomeView extends VBox implements ModelSubscriber {
     }
 
     @Override
-    public void modelTaskAdded() {
-        addNewTask(model.getLastTask());
-    }
-
-    @Override
-    public void modelTimerChanged() {
-        updateTimer();
+    public void modelTaskAdded(Task task) {
+        addNewTask(task);
     }
 
     @Override
