@@ -2,6 +2,7 @@ package com.example.assignment2;
 
 import javafx.geometry.Side;
 import javafx.scene.Group;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -96,7 +97,16 @@ public class HomeView extends VBox implements ModelSubscriber {
 
     @Override
     public void modelTaskAdded(Task task) {
-        addNewTask(task);
+        if (task == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Please use another task name!");
+            alert.setContentText("There is already an existing task with the same name!");
+            alert.showAndWait();
+        }
+        else {
+            addNewTask(task);
+        }
     }
 
     @Override

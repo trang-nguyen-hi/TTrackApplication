@@ -97,6 +97,11 @@ public class TaskView extends VBox{
         TableColumn durationCol = new TableColumn("Duration");
         durationCol.setCellValueFactory(new PropertyValueFactory<Lap, String>("durationProperty"));
 
+        dateCol.prefWidthProperty().bind(table.widthProperty().multiply(0.25));
+        startTimeCol.prefWidthProperty().bind(table.widthProperty().multiply(0.25));
+        endTimeCol.prefWidthProperty().bind(table.widthProperty().multiply(0.25));
+        durationCol.prefWidthProperty().bind(table.widthProperty().multiply(0.25));
+
         table.setMaxHeight(200);
 
         table.getColumns().addAll(dateCol, startTimeCol, endTimeCol, durationCol);
@@ -105,8 +110,8 @@ public class TaskView extends VBox{
 
     // update the timer of this view
     public void updateTimer(){
-        if (getTask().getLapList().size() > 0){
-            setLabel(getTask().getLastLap().lblTime.get());
+        if (task.currentLap != null){
+            setLabel(getTask().currentLap.lblTime.get());
         }
     }
 

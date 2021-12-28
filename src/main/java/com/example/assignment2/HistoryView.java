@@ -24,6 +24,11 @@ public class HistoryView extends TableView implements ModelSubscriber {
         TableColumn totalCol = new TableColumn("Total Time");
         totalCol.setCellValueFactory(new PropertyValueFactory<TaskMonthlyDuration, String>("totalDuration"));
 
+        taskCol.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
+        monthCol.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
+        yearCol.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
+        totalCol.prefWidthProperty().bind(this.widthProperty().multiply(0.25));
+
         this.getColumns().addAll(taskCol, monthCol, yearCol, totalCol);
     }
 

@@ -8,7 +8,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-
 public class Task {
     private final SimpleStringProperty taskNameProperty;
     private final SimpleStringProperty taskDetailProperty;
@@ -31,15 +30,6 @@ public class Task {
 
     public String getTaskName() {
         return taskNameProperty.get();
-    }
-
-    // get the newest lap of this task
-    public Lap getLastLap() {
-        if (lapList.isEmpty()) {
-            return null;
-        } else {
-            return lapList.get(lapList.size() - 1);
-        }
     }
 
     // start a task

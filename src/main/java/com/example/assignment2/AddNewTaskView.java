@@ -2,6 +2,7 @@ package com.example.assignment2;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -59,9 +60,19 @@ public class AddNewTaskView extends BorderPane {
 
     public void setController(Controller newController) {
         addButton.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-            newController.handleAddNewTask(nameField.getText(), detailField.getText());
-            nameField.setText("");
-            detailField.setText("");
+            if (nameField.getText().equals("")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Please enter a task name!");
+                alert.setContentText("Task name cannot be empty.");
+
+                alert.showAndWait();
+            }
+            else {
+                newController.handleAddNewTask(nameField.getText(), detailField.getText());
+                nameField.setText("");
+                detailField.setText("");
+            }
         });
     }
 

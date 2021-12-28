@@ -55,7 +55,7 @@ public class Lap {
         yearProperty = new SimpleIntegerProperty(localDate.getYear());
     }
 
-    // for ongoing lap
+    // for starting a lap
     public Lap(LocalDate localDate, LocalTime startTime) {
         localDateProperty = new SimpleObjectProperty<>(this, "localDateProperty", localDate);
         startTimeProperty = new SimpleObjectProperty<>(this, "startTimeProperty", startTime);

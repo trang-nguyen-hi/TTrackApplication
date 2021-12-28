@@ -14,9 +14,14 @@ public class Model {
 
     // add new task to list
     public void addNewTask(String taskName, String taskDetail) {
-        Task task = new Task(taskName, taskDetail);
-        tasks.add(task);
-        notifySubsTaskAdded(task);
+        if ( getTasks().stream().noneMatch(s -> s.getTaskName().equals(taskName))) {
+            Task task = new Task(taskName, taskDetail);
+            tasks.add(task);
+            notifySubsTaskAdded(task);
+        }
+        else{
+            notifySubsTaskAdded(null);
+        }
     }
 
     // start a task
