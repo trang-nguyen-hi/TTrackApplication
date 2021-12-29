@@ -3,6 +3,7 @@ package com.example.assignment2;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Tab;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ public class Task {
     protected final ObservableList<TaskMonthlyDuration> monthlyDurations;
 
     protected TaskView taskView;
+    protected Tab taskTab;
     protected Lap currentLap;
 
     public Task(String taskName, String taskDetail) {
@@ -26,6 +28,10 @@ public class Task {
 
     public void setTaskView(TaskView taskView) {
         this.taskView = taskView;
+    }
+
+    public void setTaskTab(Tab taskTab){
+        this.taskTab = taskTab;
     }
 
     public String getTaskName() {

@@ -61,7 +61,6 @@ public class HomeView extends VBox implements ModelSubscriber {
         TaskView taskView = new TaskView(task);
         taskView.setDetail(task.getDetail());
         taskView.setController(controller);
-        task.setTaskView(taskView);
 
         // create new tab
         Tab newTab = new Tab(task.getTaskName(), taskView);
@@ -72,6 +71,10 @@ public class HomeView extends VBox implements ModelSubscriber {
         stp = new StackPane(new Group(l));
         newTab.setGraphic(stp);
         newTab.setText("");
+
+        // pass taskView and taskTab to task
+        task.setTaskView(taskView);
+        task.setTaskTab(newTab);
 
         // direct user to the new tab
         taskPane.getSelectionModel().select(newTab);
